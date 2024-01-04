@@ -5,11 +5,13 @@ using UnityEngine;
 using MySql.Data.MySqlClient;
 namespace Database
 {
-    public class DatabaseManager : MonoBehaviour
+    public class DatabaseManager : Singleton<DatabaseManager>
     {
         [SerializeField] private DatabaseInfo databaseInfo;
         [SerializeField] private GameConfig gameConfig;
+        [SerializeField] private Popup popup;
         private MySqlConnection _connection;
+        private int _userId = 20;
         private void Awake()
         {
             ConnectToDatabase();
@@ -17,7 +19,7 @@ namespace Database
 
         private void Start()
         {
-            CheckAndUpdatePlayer(20);
+            CheckAndUpdatePlayer(_userId);
         }
 
         private void ConnectToDatabase()
@@ -47,10 +49,6 @@ namespace Database
             {
                 if (IsPlayerExist(userId))
                 {
-                    if (GetPlayCount(userId) >= gameConfig.MaxNumberPlay)
-                    {
-                       return;
-                    }
                     DateTime lastLogin = GetLastLogin(userId);
                     DateTime currentLocalTime = DateTime.Now;
                     
@@ -96,6 +94,21 @@ namespace Database
         private int GetPlayCount(int userId)
         {
             string query = $"SELECT play_count FROM user_info WHERE id = {userId};";
+            MySqlCommand cmd = new MySqlCommand(query, _connection);
+            object result = cmd.ExecuteScalar();
+
+            if (result != null && result != DBNull.Value)
+            {
+                return Convert.ToInt32(result);
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        public int GetMoney()
+        {
+            string query = $"SELECT money FROM user_info WHERE id = {_userId};";
             MySqlCommand cmd = new MySqlCommand(query, _connection);
             object result = cmd.ExecuteScalar();
 

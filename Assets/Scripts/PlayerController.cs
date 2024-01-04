@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float carSpeed;
     private Vector3 _position;
-    public FixedJoystick fixedJoystick;
     private void Start()
     {
         _position = transform.position;
@@ -19,7 +18,8 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleEditorInput()
     {
-        _position.x += fixedJoystick.Horizontal * carSpeed * Time.deltaTime;
+        float mouseXDelta = Input.GetAxis("Mouse X");
+        _position.x += mouseXDelta * carSpeed * Time.deltaTime * 3;
     }
     private void ClampPosition()
     {

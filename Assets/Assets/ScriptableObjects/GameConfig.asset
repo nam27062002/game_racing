@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   maxNumberPlay: 5
+  maxNumberErrorTitle: DAILY PLAY LIMIT
+  maxNumberErrorDescription: To ensure a fair and enjoyable experience for all players,
+    we have implemented a daily play limit. You can play up to 5 games per day. If
+    you reach the daily limit, you will not be able to play any more games until
+    the next day. This feature is designed to promote healthy gameplay habits. Thank
+    you for your cooperation

@@ -12,7 +12,7 @@ public class APIHandler : Singleton<APIHandler>
     [SerializeField] private string addPromoAPI;
     private string _userId;
     private PromoData _promoData;
-    
+    public PromoData PromoData => _promoData;
     protected override void Awake()
     {
 #if UNITY_EDITOR
