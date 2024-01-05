@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class APIHandler : Singleton<APIHandler>
+public class APIManager : Singleton<APIManager>
 {
     
     [SerializeField] private string baseUrl;

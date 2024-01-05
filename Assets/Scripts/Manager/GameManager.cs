@@ -47,15 +47,15 @@ public class GameManager : Singleton<GameManager>
     {
         switch (gameStatus)
         {
-            case State.Waiting:
-                if (Input.anyKeyDown)
-                {
-                    tapToPlayText.text = "";
-                    gameStatus = State.PrepareStartGame;
-                    StartCoroutine(SetCountdown());
-                    player.SetActive(true);
-                }
-                break;
+            // case State.Waiting:
+            //     if (Input.anyKeyDown)
+            //     {
+            //         tapToPlayText.text = "";
+            //         gameStatus = State.PrepareStartGame;
+            //         StartCoroutine(SetCountdown());
+            //         player.SetActive(true);
+            //     }
+            //     break;
         }
     }
 
@@ -93,7 +93,7 @@ public class GameManager : Singleton<GameManager>
 
     public void EndGameHandle()
     {
-        Debug.Log(APIHandler.Instance.GetPromoByScore(_score).GetString);
+        Debug.Log(APIManager.Instance.GetPromoByScore(_score).GetString);
         // if (_score >= 10)
         // {
         //     vicText.text = "VICTORY";

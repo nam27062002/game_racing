@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Mission-Icon-Transparent-Free-PNG_0: 3198436454983368162
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
